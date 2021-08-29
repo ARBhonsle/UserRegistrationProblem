@@ -34,10 +34,20 @@ public class UserRegistration {
         displayResult(pattern,mobile);
     }
 
-    // UC5 - check password - length min= 8
+    // UC5, UC6 - check password - length min= 8, Contains 1+ Capital letter
     public static void checkPassword(String password){
-        pattern = Pattern.compile("\\S{8,}");
-        displayResult(pattern,password);
+        try {
+            pattern = Pattern.compile("\\S{8,}");
+            if (pattern.matcher(password).find()) {
+                pattern = Pattern.compile("(\\S*[A-Z]+\\S*)");
+                displayResult(pattern, password);
+            }else{
+                System.out.println("Invalid");
+            }
+        }
+        catch(Exception e) {
+            System.out.println("Invalid");
+        }
     }
 
     public static void main(String[] args) {
@@ -45,7 +55,6 @@ public class UserRegistration {
         System.out.println("Give User First Name (Start with Capital Letter and min 3 characters)");
         Scanner sc = new Scanner(System.in);
         String userInput = sc.next();
-        System.out.println("Entered First Name is : ");
         userNameCheck(userInput);
         System.out.println("Entered Last Name is : ");
         userInput = sc.next();
