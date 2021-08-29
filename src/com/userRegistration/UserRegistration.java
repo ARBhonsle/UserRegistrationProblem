@@ -31,6 +31,7 @@ public class UserRegistration {
         System.out.println("Entered First Name is : ");
         userNameCheck(userInput);
         System.out.println("Entered Last Name is : ");
+        userInput = sc.next();
         userNameCheck(userInput);
     }
 }
