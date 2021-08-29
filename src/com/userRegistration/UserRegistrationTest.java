@@ -22,7 +22,7 @@ public class UserRegistrationTest {
         Assert.assertEquals(isHappy(""),false);
     }
     @Test
-    public void RegexJUnitTesting(){
+    public void RegexJUnitTesting() throws Exception {
         Assert.assertEquals(user.userNameCheck("Adi"),true);
         Assert.assertEquals(user.userNameCheck("dcm"),false);
         Assert.assertEquals(user.userEmailCheck("mcoslc@gmail.com"),true);
@@ -33,7 +33,7 @@ public class UserRegistrationTest {
         Assert.assertEquals(user.checkPassword("mweo2320KM"),false);
     }
     @Test
-    public void RegexTest(){
+    public void RegexTest() throws Exception {
         String[] list = new String[]{"Adi", "adi", "A", "aDD"};
         boolean[] listAns = new boolean[]{true, false, false, false};
         String[] email = new String[]{"adi.aaa@bl.co.in", "abc.xyz@bl.co", "adi@bl.co.in", "adi@bl.co", "adi.aaa.co.in", "adi.aaa@blco.in", "adi.aaa@bl.co.in","abc.xyz@bl.co","adi@bl.co.in","adi@bl.co","adi.aaa.co.in","adi.aaa@blco.in","asd.@go.co","asd@as@.qwdo","asd@as@.qwd@o","abc@1.com"};
