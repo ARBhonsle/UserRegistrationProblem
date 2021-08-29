@@ -28,7 +28,11 @@ public class UserRegistration {
         pattern = Pattern.compile("^[a-z.]+[a-z]+@[a-z.]+[a-z]+");
         displayResult(pattern,email);
     }
-
+    // UC4 - check mobile number
+    public static void mobileNumberCheck(String mobile) {
+        pattern = Pattern.compile("91\\s{1}[6-9]{1}[0-9]{9}");
+        displayResult(pattern,mobile);
+    }
     public static void main(String[] args) {
         System.out.println("User Registration");
         System.out.println("Give User First Name (Start with Capital Letter and min 3 characters)");
@@ -43,5 +47,8 @@ public class UserRegistration {
         System.out.println("Give valid email ID");
         userInput=sc.next();
         userEmailCheck(userInput);
+        System.out.println("Give valid mobile number");
+        userInput=sc.next();
+        mobileNumberCheck(userInput);
     }
 }
