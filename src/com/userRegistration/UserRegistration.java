@@ -33,6 +33,13 @@ public class UserRegistration {
         pattern = Pattern.compile("91\\s{1}[6-9]{1}[0-9]{9}");
         displayResult(pattern,mobile);
     }
+
+    // UC5 - check password - length min= 8
+    public static void checkPassword(String password){
+        pattern = Pattern.compile("\\S{8,}");
+        displayResult(pattern,password);
+    }
+
     public static void main(String[] args) {
         System.out.println("User Registration");
         System.out.println("Give User First Name (Start with Capital Letter and min 3 characters)");
@@ -40,7 +47,6 @@ public class UserRegistration {
         String userInput = sc.next();
         System.out.println("Entered First Name is : ");
         userNameCheck(userInput);
-        userInput = sc.next();
         System.out.println("Entered Last Name is : ");
         userInput = sc.next();
         userNameCheck(userInput);
@@ -50,5 +56,8 @@ public class UserRegistration {
         System.out.println("Give valid mobile number");
         userInput=sc.next();
         mobileNumberCheck(userInput);
+        System.out.println("Give valid password");
+        userInput=sc.next();
+        checkPassword(userInput);
     }
 }
