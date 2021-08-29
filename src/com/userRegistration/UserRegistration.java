@@ -25,8 +25,18 @@ public class UserRegistration {
     }
     // UC3- valid email
     public static void userEmailCheck(String email) {
-        pattern = Pattern.compile("^[a-z.]+[a-z]+@[a-z.]+[a-z]+");
-        displayResult(pattern,email);
+        try {
+            pattern = Pattern.compile("^[\\w.]+@(?!@)[\\w.]+$");
+            if (pattern.matcher(email).find()) {
+                pattern = Pattern.compile("^([a-z0-9+_-]+((.){0,1})[a-z0-9+_-]+)@[a-z0-9]+((.){0,1})[a-z]+");
+                displayResult(pattern, email);
+            }else{
+                System.out.println("Invalid");
+            }
+        }
+        catch(Exception e) {
+            System.out.println("Invalid");
+        }
     }
     // UC4 - check mobile number
     public static void mobileNumberCheck(String mobile) {
