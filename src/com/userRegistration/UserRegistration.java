@@ -4,6 +4,9 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * User Registration uses regex to check valid inputs
+ */
 public class UserRegistration {
 
     // variables
@@ -15,7 +18,7 @@ public class UserRegistration {
         System.out.println(matcher.find() == true ? "Valid" : "Invalid");
     }
 
-    //UC1 - valid name
+    //UC1,UC2 - valid first/last name
     public static void userNameCheck(String name) {
         pattern = Pattern.compile("[A-Z]{1}[a-zA-Z]{2,}");
         displayResult(pattern,name);
@@ -26,6 +29,9 @@ public class UserRegistration {
         Scanner sc = new Scanner(System.in);
         String userInput = sc.next();
         System.out.println("Entered First Name is : ");
+        userNameCheck(userInput);
+        System.out.println("Entered Last Name is : ");
+        userInput = sc.next();
         userNameCheck(userInput);
     }
 }
