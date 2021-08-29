@@ -23,10 +23,20 @@ public class UserRegistration {
         pattern = Pattern.compile("[A-Z]{1}[a-zA-Z]{2,}");
         displayResult(pattern,name);
     }
-    // UC3- valid email
+    // UC3, UC9 - valid email for additional check
     public static void userEmailCheck(String email) {
-        pattern = Pattern.compile("^[a-z.]+[a-z]+@[a-z.]+[a-z]+");
-        displayResult(pattern,email);
+        try {
+            pattern = Pattern.compile("^[\\w.]+@(?!@)[\\w.]+$");
+            if (pattern.matcher(email).find()) {
+                pattern = Pattern.compile("^([a-z0-9+_-]+((.){0,1})[a-z0-9+_-]+)@[a-z0-9]+((.){0,1})[a-z]+");
+                displayResult(pattern, email);
+            }else{
+                System.out.println("Invalid");
+            }
+        }
+        catch(Exception e) {
+            System.out.println("Invalid");
+        }
     }
     // UC4 - check mobile number
     public static void mobileNumberCheck(String mobile) {
