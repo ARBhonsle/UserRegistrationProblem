@@ -12,7 +12,7 @@ public class UserRegistration {
     // variables
     static Pattern pattern;
     static Matcher matcher;
-
+    // display result
     public static void displayResult(Pattern pattern, String value){
         matcher = pattern.matcher(value);
         System.out.println(matcher.find() == true ? "Valid" : "Invalid");
@@ -23,6 +23,12 @@ public class UserRegistration {
         pattern = Pattern.compile("[A-Z]{1}[a-zA-Z]{2,}");
         displayResult(pattern,name);
     }
+    // UC3- valid email
+    public static void userEmailCheck(String email) {
+        pattern = Pattern.compile("^[a-z.]+[a-z]+@[a-z.]+[a-z]+");
+        displayResult(pattern,email);
+    }
+
     public static void main(String[] args) {
         System.out.println("User Registration");
         System.out.println("Give User First Name (Start with Capital Letter and min 3 characters)");
@@ -30,8 +36,12 @@ public class UserRegistration {
         String userInput = sc.next();
         System.out.println("Entered First Name is : ");
         userNameCheck(userInput);
+        userInput = sc.next();
         System.out.println("Entered Last Name is : ");
         userInput = sc.next();
         userNameCheck(userInput);
+        System.out.println("Give valid email ID");
+        userInput=sc.next();
+        userEmailCheck(userInput);
     }
 }
