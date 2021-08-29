@@ -8,6 +8,30 @@ import org.junit.Test;
 
 public class UserRegistrationTest {
     UserRegistration user = new UserRegistration();
+    // method to check mood
+    public static boolean isHappy(String mood){
+        if(mood.equals("Happy")){
+            return true;
+        }
+        return false;
+    }
+    @Test
+    public void TestMood(){
+        Assert.assertEquals(isHappy("Happy"),true);
+        Assert.assertSame(isHappy("Sad"),false);
+        Assert.assertEquals(isHappy(""),false);
+    }
+    @Test
+    public void RegexJUnitTesting(){
+        Assert.assertEquals(user.userNameCheck("Adi"),true);
+        Assert.assertEquals(user.userNameCheck("dcm"),false);
+        Assert.assertEquals(user.userEmailCheck("mcoslc@gmail.com"),true);
+        Assert.assertEquals(user.userEmailCheck("mcoslc@@gmail.com"),false);
+        Assert.assertEquals(user.mobileNumberCheck("91 9031083290"),true);
+        Assert.assertEquals(user.mobileNumberCheck("9132432392340192"),false);
+        Assert.assertEquals(user.checkPassword("WE14315xlwq$"),true);
+        Assert.assertEquals(user.checkPassword("mweo2320KM"),false);
+    }
     @Test
     public void RegexTest(){
         String[] list = new String[]{"Adi", "adi", "A", "aDD"};
