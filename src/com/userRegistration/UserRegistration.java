@@ -34,12 +34,13 @@ public class UserRegistration {
         displayResult(pattern,mobile);
     }
 
-    // UC5, UC6, UC7 - check password - length min= 8, Contains 1+ Capital letter, Contains atleast one number
+    // UC5, UC6, UC7, UC8 - check password - length min= 8, Contains 1+ Capital letter,
+    // Contains atleast one number,one special Character
     public static void checkPassword(String password){
         try {
             pattern = Pattern.compile("\\S{8,}");
             if (pattern.matcher(password).find()) {
-                pattern = Pattern.compile("(\\S*[A-Z]+\\S*[0-9]+\\S*)");
+                pattern = Pattern.compile("(\\S*[A-Z]+\\S*[0-9]+\\S*[^a-zA-Z0-9\\s]{1}\\S*)");
                 displayResult(pattern, password);
             }else{
                 System.out.println("Invalid");
