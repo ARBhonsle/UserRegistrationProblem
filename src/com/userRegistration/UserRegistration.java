@@ -1,6 +1,7 @@
 package com.userRegistration;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,6 +13,7 @@ public class UserRegistration {
     // variables
     static Pattern pattern;
     static Matcher matcher;
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     // display result
     public static boolean displayResult(Pattern pattern, String value) {
@@ -44,51 +46,31 @@ public class UserRegistration {
     }
 
     // UC4 - check mobile number
-    public static boolean mobileNumberCheck(String mobile) throws Exception {
+    public static boolean mobileNumberCheck(String mobile) {
         pattern = Pattern.compile("91\\s{1}[6-9]{1}[0-9]{9}");
         if (!displayResult(pattern, mobile)) {
-            throw new Exception("Invalid Mobile Number");
+            return false;
         }
         return true;
     }
 
-    // UC5, UC6, UC7, UC8 - check password - length min= 8, Contains 1+ Capital letter,
-    // Contains atleast one number,one special Character
-    public static boolean checkPassword(String password) throws Exception {
+    // UC5, UC6 - check password - length min= 8, Contains 1+ Capital letter
+    public static boolean checkPassword(String password) {
         try {
             pattern = Pattern.compile("\\S{8,}");
             if (pattern.matcher(password).find()) {
-                pattern = Pattern.compile("(\\S*[A-Z]+\\S*[0-9]+\\S*[^a-zA-Z0-9\\s]{1}\\S*)");
-                if (!displayResult(pattern, password)) {
-                    throw new Exception("Invalid Password");
-                }else{
-                    return true;
-                }
-            } else {
-                throw new Exception("Invalid Password");
+                pattern = Pattern.compile("(\\S*[A-Z]+\\S*)");
+                return displayResult(pattern,password);
             }
-        } catch (Exception e) {
-            throw new Exception("Invalid Password");
         }
+        catch(Exception e) {
+            return false;
+        }
+        return true;
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         System.out.println("User Registration");
-        System.out.println("Give User First Name (Start with Capital Letter and min 3 characters)");
-        Scanner sc = new Scanner(System.in);
-        String userInput = sc.next();
-        System.out.println(userNameCheck(userInput));
-        System.out.println("Entered Last Name is : ");
-        userInput = sc.next();
-        System.out.println(userNameCheck(userInput));
-        System.out.println("Give valid email ID");
-        userInput = sc.next();
-        System.out.println(userEmailCheck(userInput));
-        System.out.println("Give valid mobile number");
-        userInput = sc.next();
-        System.out.println(mobileNumberCheck(userInput));
-        System.out.println("Give valid password");
-        userInput = sc.next();
-        System.out.println(checkPassword(userInput));
+
     }
 }
